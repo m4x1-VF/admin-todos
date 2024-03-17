@@ -1,5 +1,6 @@
 "use client";
 
+import { setCookie } from "cookies-next";
 import { useState } from "react";
 
 interface Props {
@@ -14,11 +15,17 @@ export const TabBar = ({
   const [selected, setSelected] = useState(currentTab);
   const onTabSelected = (tab: number) => {
     setSelected(tab);
+    setCookie("selectedTab", tab.toString());
   };
+
   return (
     <div
-      className={`grid w-full space-x-2 rounded-xl bg-gray-200 p-2
-    ${"grid-cols-" + tabOptions.length}
+      className={`
+
+    grid w-full space-x-2 rounded-xl bg-gray-200 p-2
+
+    grid-cols-${tabOptions.length.toString()}
+
     `}
     >
       {tabOptions.map((tab) => (
